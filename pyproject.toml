@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyfarm"
+version = "0.1.0"
+description = "A YOLO-based package for detecting and counting industrial objects."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Chhaythean LY", email = "chhaytheanly3@gmail.com"}
+]
+dependencies = [
+    "ultralytics>=8.4.58",
+    "opencv-python>=4.13.0.92",
+    "numpy>=2.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/chhaytheanly/pyfarm"
+"Bug Tracker" = "https://github.com/chhaytheanly/pyfarm/issues"
