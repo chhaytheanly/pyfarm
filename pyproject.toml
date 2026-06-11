@@ -15,7 +15,8 @@ authors = [
 dependencies = [
     "ultralytics>=8.4.58",
     "opencv-python>=4.13.0.92",
-    "numpy>=2.0.0"
+    "numpy=2.0.0",
+    "pathlib==1.0.1"
 ]
 
 [project.urls]
