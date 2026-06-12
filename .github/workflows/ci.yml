@@ -32,7 +32,7 @@ jobs:
           pip install -e ".[test]"
 
       - name: Run tests
-        run: pytest tests/ -v --tb=short
+        run: pytest test/ -v --tb=short
 
   publish:
     if: startsWith(github.ref, 'refs/tags/v')
