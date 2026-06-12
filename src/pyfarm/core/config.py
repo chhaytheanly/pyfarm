@@ -23,7 +23,7 @@ def _env_bool(key: str, default: str) -> bool:
 class Config:
     github_repo: str = field(default_factory=lambda: _env_str("GITHUB_REPO", "https://github.com/chhaytheanly/pyfarm"))
     tag: str = field(default_factory=lambda: _env_str("TAG", "v0.0.1"))
-    model_filename: str = field(default_factory=lambda: _env_str("MODEL_FILENAME", "fine_tuning_v0.pt"))
+    model_filename: str = field(default_factory=lambda: _env_str("MODEL_FILENAME", "640_yolo.pt"))
 
     cache_dir: Path = field(init=False)
 
