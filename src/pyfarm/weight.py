@@ -2,8 +2,7 @@ import os
 import urllib.request
 import urllib.error
 from pathlib import Path
-
-from ..core.config import config
+from pyfarm.core.config import config
 
 class ModelDownloader:
     def __init__(self):
@@ -13,10 +12,10 @@ class ModelDownloader:
     def download(self) -> str:
 
         if self.model_path.exists():
-            print(f" Model already exists at {self.model_path}. Skipping download.")
+            print(f"Model already exists at {self.model_path}. Skipping download.")
             return str(self.model_path)
         
-        print(f" Downloading model from {self.url} to {self.model_path}...")
+        print(f"Downloading model from {self.url} to {self.model_path}...")
         
         request = urllib.request.Request(self.url)
         github_token = os.environ.get("GITHUB_TOKEN")
@@ -28,7 +27,7 @@ class ModelDownloader:
                 while chunk := response.read(8192):
                     out_file.write(chunk)
                     
-            print(f" Model downloaded successfully to {self.model_path}.")
+            print(f"Model downloaded successfully to {self.model_path}.")
             return str(self.model_path)
         
         # 4. Proper Error Handling
@@ -44,9 +43,9 @@ class ModelDownloader:
                     "If this is a private repository, you must set the GITHUB_TOKEN environment variable."
                 )
             else:
-                raise RuntimeError(f" Failed to download model weights: {e}")
+                raise RuntimeError(f"Failed to download model weights: {e}")
                 
         except Exception as e:
-            raise RuntimeError(f" An unexpected error occurred during download: {e}")
+            raise RuntimeError(f"An unexpected error occurred during download: {e}")
 
 downloader = ModelDownloader()

@@ -7,18 +7,34 @@ name = "pyfarm"
 version = "0.1.0"
 description = "A YOLO-based package for detecting and counting industrial objects."
 readme = "README.md"
-requires-python = ">=3.8"
-license = {text = "MIT"}
+requires-python = ">=3.10"
+license = "MIT"
 authors = [
     {name = "Chhaythean LY", email = "chhaytheanly3@gmail.com"}
 ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["yolo", "detection", "industrial", "object-detection", "ultralytics"]
 dependencies = [
     "ultralytics>=8.4.58",
     "opencv-python>=4.13.0.92",
-    "numpy=2.0.0",
-    "pathlib==1.0.1"
+    "numpy>=2.0.0",
 ]
+
+[project.optional-dependencies]
+test = ["pytest"]
 
 [project.urls]
 "Homepage" = "https://github.com/chhaytheanly/pyfarm"
 "Bug Tracker" = "https://github.com/chhaytheanly/pyfarm/issues"
+
+[project.scripts]
+pyfarm = "pyfarm.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pyfarm*"]
