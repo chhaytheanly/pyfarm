@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 
 def _env_str(key: str, default: str) -> str:
@@ -54,5 +54,17 @@ class Config:
             "iou": self.iou_threshold,
             "imgsz": self.img_size,
         }
+    
+    @classmethod
+    def create(cls, **overrides) -> "Config":
+        instance = cls()
+
+        if overrides:
+            valid_fields = {f.name for f in cls.__dataclass_fields__.values()}
+            filtered_overrides = {k: v for k, v in overrides.items() if k in valid_fields}
+            if filtered_overrides:
+                instance = replace(instance, **filtered_overrides)
+        
+        return instance
 
 config = Config()

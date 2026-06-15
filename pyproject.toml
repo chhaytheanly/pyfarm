@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyfarm-detection"
-version = "0.1.0"
+version = "0.0.1"
 description = "A YOLO-based package for detecting and counting industrial objects."
 readme = "README.md"
 requires-python = ">=3.10"
