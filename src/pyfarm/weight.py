@@ -1,13 +1,15 @@
 import os
+from typing import Optional
 import urllib.request
 import urllib.error
 from pathlib import Path
-from pyfarm.core.config import config
+from pyfarm.core.config import Config, config
 
 class ModelDownloader:
-    def __init__(self):
-        self.model_path = config.cache_dir / config.model_filename
-        self.url = f"{config.github_repo}/releases/download/{config.tag}/{config.model_filename}"
+    def __init__(self, config: Optional[Config] = None):
+        self.config = config or Config()
+        self.model_path = self.config.cache_dir / self.config.model_filename
+        self.url = f"{self.config.github_repo}/releases/download/{self.config.tag}/{self.config.model_filename}"
 
     def download(self) -> str:
 
@@ -35,7 +37,7 @@ class ModelDownloader:
             if e.code == 404:
                 raise RuntimeError(
                     f"Model not found at {self.url}.\n"
-                    f"Please verify your config: tag='{config.tag}', file='{config.model_filename}'"
+                    f"Please verify your config: tag='{self.config.tag}', file='{self.config.model_filename}'"
                 )
             elif e.code == 403:
                 raise RuntimeError(
